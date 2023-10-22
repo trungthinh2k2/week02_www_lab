@@ -14,7 +14,7 @@ public class EmployeeRepository {
             LoggerFactory.getLogger(this.getClass().getName());
     public EmployeeRepository() {
         em = Persistence
-                .createEntityManagerFactory("week_lab2")
+                .createEntityManagerFactory("week02_www_lab")
                 .createEntityManager();
         trans = em.getTransaction();
     }

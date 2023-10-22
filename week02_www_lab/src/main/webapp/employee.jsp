@@ -23,7 +23,6 @@
       <th>ID</th>
       <th>Name</th>
       <th>DOB</th>
-      <th></th>
       <th>Email</th>
       <th>Phone</th>
       <th>Address</th>
