@@ -6,6 +6,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.hibernate.internal.build.AllowSysOut;
 import vn.edu.iuh.fit.week02_www_lab.frontend.models.EmployeeModel;
 
 import java.io.IOException;
@@ -14,6 +15,22 @@ import java.io.IOException;
 public class ControllerServlet extends HttpServlet {
     @Inject
     EmployeeModel employeeModel;
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        try {
+            Object actionObject = req.getParameter("action");
+            if(actionObject != null) {
+                String action = actionObject.toString();
+                switch (action) {
+                    case "emp_list":
+                        employeeModel.getEmployeeList(req,resp);
+                }
+            }
+        }catch (Exception ex) {
+            ex.getMessage();
+        }
+    }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -27,8 +44,8 @@ public class ControllerServlet extends HttpServlet {
                         resp.sendRedirect("index.jsp");
                 }
             }
-        }catch (Exception e){
-            System.out.println(e.getMessage());
+        }catch (Exception ex){
+            System.out.println(ex.getMessage());
         }
     }
 }

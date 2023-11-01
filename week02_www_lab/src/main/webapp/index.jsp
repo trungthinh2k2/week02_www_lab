@@ -5,6 +5,7 @@
     <title>index</title>
 </head>
 <body>
+<a href="employee.jsp">List Employee</a>
 <a href="add_employee.jsp">Add Employee</a>
 </body>
 </html>

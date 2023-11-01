@@ -1,5 +1,6 @@
 <%@ page import="vn.edu.iuh.fit.week02_www_lab.backend.models.Employee" %>
-<%@ page import="java.util.List" %><%--
+<%@ page import="java.util.List" %>
+<%@ page import="vn.edu.iuh.fit.week02_www_lab.backend.repositories.EmployeeRepository" %><%--
   Created by IntelliJ IDEA.
   User: DTS
   Date: 22/10/2023
@@ -12,13 +13,13 @@
 <head>
   <title>Employee</title>
 </head>
-<body>
 <%
-  List<Employee> empList = (List<Employee>) request.getAttribute("empList");
+  EmployeeRepository employeeRepository = new EmployeeRepository();
+  List<Employee> employees = employeeRepository.getListEmployee();
 %>
+<body>
 <div>
-  <table>
-    <thead>
+  <table width="80%" align="center" border="1">
     <tr>
       <th>ID</th>
       <th>Name</th>
@@ -27,11 +28,10 @@
       <th>Phone</th>
       <th>Address</th>
       <th>Status</th>
-      <th><a href="">Insert</a></th>
+      <th colspan="2"><a href="">Insert</a></th>
     </tr>
-    </thead>
+    <%for (Employee emp: employees) {%>
     <tr>
-      <%for (Employee emp: empList) {%>
       <td><%=emp.getId()%></td>
       <td><%= emp.getFullname() %></td>
       <td><%=emp.getDob() %></td>
@@ -39,8 +39,9 @@
       <td><%=emp.getPhone() %></td>
       <td><%=emp.getAddress() %></td>
       <td><%=emp.getStatus() %></td>
-      <td><a href="">Update</a></td>
-      <td><a href="control?action=delete_emp?empId=<%=emp.getId()%>">Delete</a></td>
+      <td><a href="#">Update</a></td>
+      <td><a href="#">Delete</a></td>
+<%--      control?action=delete_emp?empId=<%=emp.getId()%>--%>
       <%}%>
     </tr>
   </table>

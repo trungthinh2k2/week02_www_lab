@@ -5,6 +5,8 @@ import jakarta.inject.Inject;
 import vn.edu.iuh.fit.week02_www_lab.backend.models.Employee;
 import vn.edu.iuh.fit.week02_www_lab.backend.repositories.EmployeeRepository;
 
+import java.util.List;
+
 @ApplicationScoped
 public class EmployeeService {
     @Inject
@@ -15,5 +17,8 @@ public class EmployeeService {
     }
     public void insertEmployee(Employee employee) {
         employeeRepository.insertEmployee(employee);
+    }
+    public List<Employee> getListEmployee() {
+        return employeeRepository.getListEmployee();
     }
 }

@@ -7,6 +7,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import vn.edu.iuh.fit.week02_www_lab.backend.models.Employee;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class EmployeeRepository {
     private EntityManager em;
     private EntityTransaction trans;
@@ -28,6 +31,14 @@ public class EmployeeRepository {
             logger.error(ex.getMessage());
         }
     }
+    public List<Employee> getListEmployee() {
+        try {
+            return em.createNamedQuery("Employee.getListEmployee", Employee.class).getResultList();
+        }catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return new ArrayList<>();
+    }
 
     public static void main(String[] args) {
         EntityManager em = Persistence
@@ -40,6 +51,7 @@ public class EmployeeRepository {
         } catch (Exception ex) {
             trans.rollback();
             ex.printStackTrace();
+
         }
     }
 }
