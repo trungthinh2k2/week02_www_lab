@@ -6,14 +6,15 @@
     <persistence-unit name="week02_www_lab">
         <properties>
             <property name="jakarta.persistence.jdbc.driver" value="org.mariadb.jdbc.Driver"/>
-            <property name="jakarta.persistence.jdbc.url" value="jdbc:mariadb://localhost:3306/db_week_lab2"/>
+            <property name="jakarta.persistence.jdbc.dialect"
+                      value="org.hibernate.dialect.Dialect" />
+            <property name="jakarta.persistence.jdbc.url"
+                      value="jdbc:mariadb://localhost:3306/db_week_lab2?createDatabaseIfNotExist=true" />
             <property name="jakarta.persistence.jdbc.user" value="root"/>
             <property name="jakarta.persistence.jdbc.password" value="08062002"/>
-            <property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>
-            <property name="hbm2ddl.auto" value="create-drop"/>
-            <property name="hibernate.show_sql" value="true"/>
-
-            <property name="hibernate.dialect" value="org.hibernate.dialect.MariaDBDialect"/>
+            <property name="hibernate.show_sql" value="true" />
+            <property name="hibernate.hbm2ddl.auto" value="update" />
+            <property name="hibernate.format_sql" value="true" />
         </properties>
     </persistence-unit>
 </persistence>

@@ -28,4 +28,18 @@ public class EmployeeRepository {
             logger.error(ex.getMessage());
         }
     }
+
+    public static void main(String[] args) {
+        EntityManager em = Persistence
+                .createEntityManagerFactory("week02_www_lab")
+                .createEntityManager();
+        EntityTransaction trans = em.getTransaction();
+        try {
+            trans.begin();
+            trans.commit();
+        } catch (Exception ex) {
+            trans.rollback();
+            ex.printStackTrace();
+        }
+    }
 }
