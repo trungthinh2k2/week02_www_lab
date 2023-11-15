@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.hibernate.internal.build.AllowSysOut;
+import vn.edu.iuh.fit.week02_www_lab.backend.models.Employee;
 import vn.edu.iuh.fit.week02_www_lab.frontend.models.CustomerModel;
 import vn.edu.iuh.fit.week02_www_lab.frontend.models.EmployeeModel;
 
@@ -45,15 +46,11 @@ public class ControllerServlet extends HttpServlet {
 //                        EmployeeModel employeeModel = new EmployeeModel();
                         employeeModel.insertEmployee(req,resp);
                         resp.sendRedirect("listEmployee.jsp");
-
                     case "insertCust":
                         CustomerModel customerModel = new CustomerModel();
                         customerModel.insertCust(req,resp);
                         resp.sendRedirect("listCustomer.jsp");
-                    case "update_employee":
-//                        EmployeeModel employeeModel = new EmployeeModel();
-                        employeeModel.updateEmployee(req,resp);
-                        resp.sendRedirect("listEmployee.jsp");
+                   
                 }
             }
 

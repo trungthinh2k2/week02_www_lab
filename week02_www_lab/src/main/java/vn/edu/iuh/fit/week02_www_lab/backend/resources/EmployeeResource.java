@@ -10,6 +10,7 @@ import vn.edu.iuh.fit.week02_www_lab.backend.models.Employee;
 import vn.edu.iuh.fit.week02_www_lab.backend.services.EmployeeService;
 
 import java.util.List;
+import java.util.Optional;
 
 @Path("/employee")
 public class EmployeeResource {
@@ -26,6 +27,17 @@ public class EmployeeResource {
         //paging if possible
         List<Employee> lst = employeeService.getListEmployee();
         return Response.ok(lst).build();
+    }
+
+    @GET
+    @Produces("application/json")
+    @Path("/{id}")
+    public Response getEmp(@PathParam("id") long eid) {
+        Optional<Employee> empOpt = employeeService.findById(eid);
+        if (empOpt.isPresent()) {
+            return Response.ok(empOpt.get()).build();
+        }
+        return Response.status(Response.Status.BAD_REQUEST).build();
     }
 
     @POST

@@ -3,6 +3,7 @@ package vn.edu.iuh.fit.week02_www_lab.backend.repositories;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
+import jakarta.persistence.TypedQuery;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import vn.edu.iuh.fit.week02_www_lab.backend.enums.EmployeeStatus;
@@ -11,6 +12,7 @@ import vn.edu.iuh.fit.week02_www_lab.backend.models.Employee;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class EmployeeRepository {
     private EntityManager em;
@@ -40,15 +42,24 @@ public class EmployeeRepository {
                 .getResultList();
     }
 
-    public void updateEmployee(Employee employee) {
+    public boolean updateEmployee(Employee employee) {
         try {
             trans.begin();
             em.merge(employee);
             trans.commit();
+            return  true;
         } catch (Exception ex) {
             trans.rollback();
             logger.error(ex.getMessage());
         }
+        return false;
+    }
+
+    public Optional<Employee> findbyId(long id) {
+        TypedQuery<Employee> query = em.createNamedQuery("Employee.getEmployeeFindById", Employee.class)
+                .setParameter("id", id);
+        Employee emp = query.getSingleResult();
+        return emp == null ? Optional.empty() : Optional.of(emp);
     }
 
     public static void main(String[] args) {

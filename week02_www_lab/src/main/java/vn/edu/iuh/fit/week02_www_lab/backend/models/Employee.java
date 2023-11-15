@@ -11,6 +11,7 @@ import java.util.List;
 @Table(name = "employee")
 @NamedQueries({
         @NamedQuery(name = "Employee.getListEmployee", query = "select e from Employee e where e.status= ?1"),
+        @NamedQuery(name = "Employee.getEmployeeFindById", query = "select e from Employee e where e.id=:id"),
 })
 public class Employee {
     @Id

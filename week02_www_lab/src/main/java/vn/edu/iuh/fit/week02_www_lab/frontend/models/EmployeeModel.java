@@ -29,14 +29,7 @@ public class EmployeeModel {
     public List<Employee> getEmployeeList(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException{
         return employeeService.getListEmployee();
     }
-    public void updateEmployee(HttpServletRequest req, HttpServletResponse resp){
-        String empName = req.getParameter("full_name");
-        LocalDate empDob = LocalDate.parse(req.getParameter("dob"));
-        String empPhone = req.getParameter("phone");
-        String empEmail = req.getParameter("email");
-        String empAddress = req.getParameter("address");
-
-        Employee employee  = new Employee(empName,empDob,empEmail,empAddress,empPhone, EmployeeStatus.ACTIVE);
-        employeeService.updateEmployee(employee);
+    public boolean updateEmployee(Employee employee){
+        return employeeService.updateEmployee(employee);
     }
 }
