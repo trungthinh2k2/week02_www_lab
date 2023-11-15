@@ -1,15 +1,16 @@
 package vn.edu.iuh.fit.week02_www_lab.backend.models;
 
 import jakarta.persistence.*;
-import org.joda.time.LocalDateTime;
 import vn.edu.iuh.fit.week02_www_lab.backend.enums.EmployeeStatus;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
 @Table(name = "employee")
 @NamedQueries({
-        @NamedQuery(name = "Employee.getListEmployee", query = "from Employee"),
+        @NamedQuery(name = "Employee.getListEmployee", query = "select e from Employee e where e.status= ?1"),
 })
 public class Employee {
     @Id
@@ -19,7 +20,7 @@ public class Employee {
     @Column(name = "full_name", columnDefinition = "varchar(150)")
     private String fullname;
     @Column(name = "dob", columnDefinition = "Datetime(6)")
-    private LocalDateTime dob;
+    private LocalDate dob;
     @Column(name = "email", columnDefinition = "varchar(150)")
     private String email;
     @Column(name = "address", columnDefinition = "varchar(250)")
@@ -33,7 +34,7 @@ public class Employee {
 
     public Employee() {
     }
-    public Employee(String fullname, LocalDateTime dob, String email, String address, String phone, EmployeeStatus status) {
+    public Employee(String fullname, LocalDate dob, String email, String address, String phone, EmployeeStatus status) {
 
         this.fullname = fullname;
         this.dob = dob;
@@ -43,7 +44,7 @@ public class Employee {
         this.status = status;
     }
 
-    public Employee(long id, String fullname, LocalDateTime dob, String email, String address, String phone, EmployeeStatus status, List<Orders> orders) {
+    public Employee(long id, String fullname, LocalDate dob, String email, String address, String phone, EmployeeStatus status, List<Orders> orders) {
         this.id = id;
         this.fullname = fullname;
         this.dob = dob;
@@ -70,12 +71,12 @@ public class Employee {
         this.fullname = fullname;
     }
 
-    public LocalDateTime getDob() {
+    public LocalDate getDob() {
         return dob;
     }
 
-    public void setDob(LocalDateTime dob) {
-        this.dob = dob;
+    public void setDob(LocalDate dob) {
+        this.dob = LocalDate.from(dob);
     }
 
     public String getEmail() {

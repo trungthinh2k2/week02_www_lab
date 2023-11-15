@@ -1,7 +1,8 @@
 package vn.edu.iuh.fit.week02_www_lab.backend.models;
 
 import jakarta.persistence.*;
-import org.joda.time.LocalDateTime;
+
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "product_price")

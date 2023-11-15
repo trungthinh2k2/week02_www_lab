@@ -6,6 +6,9 @@ import java.util.List;
 
 @Entity
 @Table(name = "customer")
+@NamedQueries({
+        @NamedQuery(name = "Customer.getListCustomer", query = "select c from Customer c"),
+})
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,6 +30,12 @@ public class Customer {
 
     public Customer(long id, String name, String email, String address, String phone) {
         this.id = id;
+        this.name = name;
+        this.email = email;
+        this.address = address;
+        this.phone = phone;
+    }
+    public Customer(String name, String email, String address, String phone) {
         this.name = name;
         this.email = email;
         this.address = address;

@@ -5,7 +5,8 @@
     <title>index</title>
 </head>
 <body>
-<a href="employee.jsp">List Employee</a>
-<a href="add_employee.jsp">Add Employee</a>
+<a href="ControlServlet?action=emp_list">List Employee</a>
+<a href="insertEmployee.jsp">Add Employee</a>
+<a href="ControlServlet?action=cust_list">Customer listing</a>
 </body>
 </html>

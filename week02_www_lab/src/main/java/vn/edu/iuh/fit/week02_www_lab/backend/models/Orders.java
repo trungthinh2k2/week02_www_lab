@@ -1,8 +1,8 @@
 package vn.edu.iuh.fit.week02_www_lab.backend.models;
 
 import jakarta.persistence.*;
-import org.joda.time.LocalDateTime;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -13,7 +13,7 @@ public class Orders {
     @Column(name = "order_id")
     private long id;
     @Column(name = "order_date", columnDefinition = "Datetime(6)")
-    private LocalDateTime orderDate;
+    private LocalDate orderDate;
     @ManyToOne
     @JoinColumn(name = "cust_id")
     private Customer customer;
@@ -26,7 +26,7 @@ public class Orders {
     public Orders() {
     }
 
-    public Orders(long id, LocalDateTime orderDate, Customer customer, Employee employee) {
+    public Orders(long id, LocalDate orderDate, Customer customer, Employee employee) {
         this.id = id;
         this.orderDate = orderDate;
         this.customer = customer;
@@ -41,11 +41,11 @@ public class Orders {
         this.id = id;
     }
 
-    public LocalDateTime getOrderDate() {
+    public LocalDate getOrderDate() {
         return orderDate;
     }
 
-    public void setOrderDate(LocalDateTime orderDate) {
+    public void setOrderDate(LocalDate orderDate) {
         this.orderDate = orderDate;
     }
 

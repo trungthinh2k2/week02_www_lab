@@ -7,18 +7,18 @@ import vn.edu.iuh.fit.week02_www_lab.backend.repositories.EmployeeRepository;
 
 import java.util.List;
 
-@ApplicationScoped
 public class EmployeeService {
-    @Inject
-    private EmployeeRepository employeeRepository;
-    @Inject
+    private final EmployeeRepository employeeRepository;
     public EmployeeService() {
-        this.employeeRepository = employeeRepository;
+        employeeRepository = new EmployeeRepository();
     }
     public void insertEmployee(Employee employee) {
         employeeRepository.insertEmployee(employee);
     }
     public List<Employee> getListEmployee() {
-        return employeeRepository.getListEmployee();
+        return employeeRepository.getAllEmp();
+    }
+    public void updateEmployee(Employee employee) {
+        employeeRepository.updateEmployee(employee);
     }
 }

@@ -7,14 +7,14 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.hibernate.internal.build.AllowSysOut;
+import vn.edu.iuh.fit.week02_www_lab.frontend.models.CustomerModel;
 import vn.edu.iuh.fit.week02_www_lab.frontend.models.EmployeeModel;
 
 import java.io.IOException;
 
 @WebServlet(urlPatterns = "/ControlServlet")
 public class ControllerServlet extends HttpServlet {
-    @Inject
-    EmployeeModel employeeModel;
+    EmployeeModel employeeModel = new EmployeeModel();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -24,11 +24,13 @@ public class ControllerServlet extends HttpServlet {
                 String action = actionObject.toString();
                 switch (action) {
                     case "emp_list":
-                        employeeModel.getEmployeeList(req,resp);
+                        resp.sendRedirect("listEmployee.jsp");
+                    case "cust_list":
+                        resp.sendRedirect("listCustomer.jsp");
                 }
             }
         }catch (Exception ex) {
-            ex.getMessage();
+            System.out.println(ex.getMessage());
         }
     }
 
@@ -39,11 +41,22 @@ public class ControllerServlet extends HttpServlet {
             if(actionObject != null){
                 String action = actionObject.toString();
                 switch (action) {
-                    case "add_employee":
+                    case "insert_employee":
+//                        EmployeeModel employeeModel = new EmployeeModel();
                         employeeModel.insertEmployee(req,resp);
-                        resp.sendRedirect("index.jsp");
+                        resp.sendRedirect("listEmployee.jsp");
+
+                    case "insertCust":
+                        CustomerModel customerModel = new CustomerModel();
+                        customerModel.insertCust(req,resp);
+                        resp.sendRedirect("listCustomer.jsp");
+                    case "update_employee":
+//                        EmployeeModel employeeModel = new EmployeeModel();
+                        employeeModel.updateEmployee(req,resp);
+                        resp.sendRedirect("listEmployee.jsp");
                 }
             }
+
         }catch (Exception ex){
             System.out.println(ex.getMessage());
         }
