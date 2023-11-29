@@ -62,6 +62,20 @@ public class EmployeeRepository {
         return emp == null ? Optional.empty() : Optional.of(emp);
     }
 
+    public void setStatus(Employee employee, EmployeeStatus status) {
+        employee.setStatus(status);
+    }
+    public boolean delete(long id) {
+        Optional<Employee> op = findbyId(id);
+        if (op.isPresent()) {
+            Employee employee = op.get();
+            employee.setStatus(EmployeeStatus.TERMIATED);
+            return true;
+        }
+        return false;
+    }
+
+
     public static void main(String[] args) {
         EntityManager em = Persistence
                 .createEntityManagerFactory("week02_www_lab")

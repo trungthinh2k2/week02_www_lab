@@ -6,7 +6,6 @@
 </head>
 <body>
 <a href="ControlServlet?action=emp_list">List Employee</a>
-<a href="insertEmployee.jsp">Add Employee</a>
-<a href="ControlServlet?action=cust_list">Customer listing</a>
+<a href="ControlServlet?action=cust_list">List Customer</a>
 </body>
 </html>

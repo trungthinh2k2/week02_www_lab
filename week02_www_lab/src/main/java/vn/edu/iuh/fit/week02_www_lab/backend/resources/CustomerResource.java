@@ -6,6 +6,7 @@ import vn.edu.iuh.fit.week02_www_lab.backend.models.Customer;
 import vn.edu.iuh.fit.week02_www_lab.backend.services.CustomerService;
 
 import java.util.List;
+import java.util.Optional;
 
 @Path("/customers")
 public class CustomerResource {
@@ -16,6 +17,17 @@ public class CustomerResource {
     public Response insert(Customer customer) {
         customerServices.insertCust(customer);
         return Response.ok(customer).build();
+    }
+
+    @GET
+    @Produces("application/json")
+    @Path("/{id}")
+    public Response getCust(@PathParam("id") long eid) {
+        Optional<Customer> custOpt = customerServices.findById(eid);
+        if (custOpt.isPresent()) {
+            return Response.ok(custOpt.get()).build();
+        }
+        return Response.status(Response.Status.BAD_REQUEST).build();
     }
 
     @GET

@@ -2,6 +2,7 @@ package vn.edu.iuh.fit.week02_www_lab.backend.services;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
+import vn.edu.iuh.fit.week02_www_lab.backend.enums.EmployeeStatus;
 import vn.edu.iuh.fit.week02_www_lab.backend.models.Employee;
 import vn.edu.iuh.fit.week02_www_lab.backend.repositories.EmployeeRepository;
 
@@ -24,5 +25,12 @@ public class EmployeeService {
     }
     public Optional<Employee> findById(long id) {
         return employeeRepository.findbyId(id);
+    }
+
+    public boolean delete(long id) {
+        return employeeRepository.delete(id);
+    }
+    public void setStatus(Employee employee, EmployeeStatus employeeStatus) {
+        employeeRepository.setStatus(employee, EmployeeStatus.TERMIATED);
     }
 }
