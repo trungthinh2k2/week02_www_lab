@@ -37,6 +37,8 @@ Lập REST API cho các thao tác cần thiết của yêu cầu này (dùng Jak
   ![InsertCustomer](https://github.com/trungthinh2k2/week02_www_lab/assets/89030667/10a10f30-fb41-4c34-b0d8-d0d892dc2ca9)
   ### CSDL sau khi thêm
   ![CSDL](https://github.com/trungthinh2k2/week02_www_lab/assets/89030667/f761bd82-4304-44af-99b5-9801c7088547)
+  ![CSDL2](https://github.com/trungthinh2k2/week02_www_lab/assets/89030667/19bb47ac-a32e-4c0c-b61e-6e026deec5ee)
+
 ## II. Những hạn chế chưa làm được
   ### 1. Chưa lập được
   ### 2. Chưa thực hiện được các thao tác thống kê
